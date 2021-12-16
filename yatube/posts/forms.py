@@ -6,9 +6,9 @@ from .models import Comment, Post
 class PostForm(forms.ModelForm):
     """Присваивает атрибуты форме поста."""
     # text = forms.CharField(widget=forms.Textarea(
-        # attrs={'name': 'text', 'cols': '40', 'rows': '10'}),
-        # label='Текст поста',
-        # help_text='Текст поста не должен быть пустым'
+    #   attrs={'name': 'text', 'cols': '40', 'rows': '10'}),
+    #   label='Текст поста',
+    #   help_text='Текст поста не должен быть пустым'
     # )
 
     class Meta:
