@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block title %}
+  Только авторы, которых я люблю читать
+{% endblock %}
+{% load user_filters %}
+{% block content %}
+  {% include 'posts/includes/switcher.html' %}
+{% load cache %}
+{% cache 20 follow_page request.GET.page %}
+  {% for post in page_obj %}
+    <ul class="mt-3">
+        <li>
+          Дата публикации: <b>{{ post.pub_date|date:"d E Y" }}</b>
+        </li>
+        <li>
+          Автор: <b>
+          {% if post.author.get_full_name %}
+            {{ post.author.get_full_name }}
+          {% else %}
+            {{ post.author.username }}
+          {% endif %}</b>
+          <div class="row">
+            <a href="{% url "posts:profile" post.author.username %}">Все посты пользователя</a>
+          </div>
+        </li>
+      {% if post.group %}
+        <li>
+          Группа: <b>{{ post.group.title }}</b>
+        </li>
+        <div class="row">
+          <a 
+            href="{% url "posts:group_list" post.group.slug %}"
+            >Все записи группы</a>
+        </div>
+      {% endif %}
+    </ul>
+    {% thumbnail post.image "960x339" crop="center" upscale=True as im %}
+      <img class="card-img my-2" src="{{ im.url }}">
+    {% endthumbnail %}
+      <p>
+        <i>{{ post.text|text_processor:5 }}</i>
+          <div class="row">
+            <a
+              href="{% url "posts:post_detail" post.pk %}"
+              >Подробная информация</a>
+          </div>
+      </p>    
+    {% if not forloop.last %}
+      <hr>
+    {% endif%}
+  {% endfor %}
+{% endcache %}
+  {% include "posts/includes/paginator.html" %}
+{% endblock %}
+

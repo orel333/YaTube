@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Все посты пользователя {{ user_name }}{% endblock %}
+{% block content %}
+  <b>{{ user_name }}</b>
+  <div class="row">
+    <a href="{% url "posts:profile" user.username %}">
+      Профиль пользователя
+    </a>
+  </div>
+  {% for post in page_obj %}
+    <p>
+      <ul>
+        <li>
+          Дата публикации: <b>{{ post.pub_date|date:"d E Y" }}</b>
+        </li>
+      </ul>
+      <p><i>{{ post.text }}</i></p>
+    </p>
+    {% if not forloop.last %}
+      <hr>
+    {% endif%}
+  {% endfor %}
+  {% include "posts/includes/paginator.html" %}
+{% endblock %}

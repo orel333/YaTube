@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Custom 404{% endblock %}
+{% block content %}
+<h1>Custom 500</h1>
+<p>На нашей стороне возникли какие-то проблемы, <br> 
+вряд ли это из-за Роскомнадзора</p>
+<a href="{% url 'posts:index' %}">Идите на главную</a>
+{% endblock %}
