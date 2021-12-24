@@ -1,6 +1,7 @@
 # from django.utils import dateformat
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import F, Q
 from django.db.models.fields.related import ForeignKey
 # from django.conf import settings
 
@@ -146,3 +147,8 @@ class Follow(models.Model):
         ordering = ('-subscribe_date',)
         verbose_name = 'подписка'
         verbose_name_plural = 'подписки'
+        constraints = [
+            # models.CheckConstraint(
+                # check=~(F('user')==F('author')), name='not_for_self'),
+            models.UniqueConstraint(
+                fields=['user', 'author'], name="unique_follow"),]
