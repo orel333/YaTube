@@ -50,7 +50,6 @@ def group_posts(request, slug):
 def profile(request, username):
     """Создаёт представление профиля пользователя."""
     author = get_object_or_404(User, username=username)
-    print(request.user.username)
     # author = user.username
     # posts = author.posts.all()
     posts = Post.objects.filter(author=author).select_related(
