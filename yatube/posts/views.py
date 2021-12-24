@@ -57,18 +57,18 @@ def profile(request, username):
     user_name = user_name_func(author)
     paginator = Paginator(posts, PAGINATOR_NUM)
     page_obj = paginator_func(request, posts, PAGINATOR_NUM)
-    collision = False
+    # collision = False
     following = False
     if request.user.is_authenticated:
-        if request.user == author:
-            collision = True
+        # if request.user == author:
+            # collision = True
         if Follow.objects.filter(user=request.user, author=author).exists():
             following = True
         else:
             following = False
 
     context = {
-        'collision': collision,
+        # 'collision': collision,
         'following': following,
         'page_obj': page_obj,
         'posts_total': paginator.count,
@@ -202,15 +202,15 @@ def follow_index(request):
 @login_required
 def profile_follow(request, username):
     """Подписаться на автора."""
-    author = get_object_or_404(User, username=username)
-    if request.user != author and not Follow.objects.filter(
-        user=request.user,
-        author=author
-    ).exists():
-        Follow.objects.create(
-            user=get_object_or_404(User, username=request.user.username),
-            author=get_object_or_404(User, username=username)
-        )
+    # author = get_object_or_404(User, username=username)
+    # if request.user != author and not Follow.objects.filter(
+        # user=request.user,
+        # author=author
+    # ).exists():
+    Follow.objects.create(
+        user=get_object_or_404(User, username=request.user.username),
+        author=get_object_or_404(User, username=username)
+    )
     return redirect('posts:profile', username)
 
 
