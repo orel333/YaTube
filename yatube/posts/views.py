@@ -23,7 +23,7 @@ def index(request):
     # id__in=id_list).select_related('author')
 
     context = {
-        'index': True,
+        # 'index': True,
         'page_obj': page_obj,
     }
     template = 'posts/index.html'
@@ -185,13 +185,14 @@ def follow_index(request):
        которых пользователь подписан."""
     user = request.user
     # follows = user.follower.all()
-    follows = Follow.objects.filter(user=user)
-    authors = set([x.author for x in follows])
-    posts = Post.objects.filter(author__in=authors)
+    # follows = Follow.objects.filter(user=user)
+    # authors = set([x.author for x in follows])
+    # posts = Post.objects.filter(author__in=authors)
+    posts = Post.objects.filter(author__following__user=user)
     # post_list = Post.objects.filter(author__in=authors)
     page_obj = paginator_func(request, posts, PAGINATOR_NUM)
     context = {
-        'follow': True,
+        #'follow': True,
         'page_obj': page_obj,
     }
     template = 'posts/follow.html'
