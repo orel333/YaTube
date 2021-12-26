@@ -15,15 +15,15 @@ class StaticURLTests(TestCase):
         response = self.guest_client.get('/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
-    def test_author(self):
-        """Страница с информацией об авторе доступна."""
-        response = self.guest_client.get(cst.URLS_ABOUT_DICT['author'])
-        self.assertEqual(response.status_code, HTTPStatus.OK)
+    # def test_author(self):
+        # """Страница с информацией об авторе доступна."""
+        # response = self.guest_client.get(cst.URLS_ABOUT_DICT['author'])
+        # self.assertEqual(response.status_code, HTTPStatus.OK)
 
-    def test_tech(self):
-        """Страница с информацией об использованных технологиях доступна."""
-        response = self.guest_client.get(cst.URLS_ABOUT_DICT['tech'])
-        self.assertEqual(response.status_code, HTTPStatus.OK)
+    # def test_tech(self):
+        # """Страница с информацией об использованных технологиях доступна."""
+        # response = self.guest_client.get(cst.URLS_ABOUT_DICT['tech'])
+        # self.assertEqual(response.status_code, HTTPStatus.OK)
 
 
 class PostsURLTests(TestCase):

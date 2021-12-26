@@ -11,7 +11,6 @@ class PaginatorViewsTest(TestCase):
 
     @classmethod
     def setUpClass(cls):
-
         super().setUpClass()
         cls.new_client = Client()
         cls.newuser = User.objects.create_user(
@@ -291,6 +290,8 @@ class ContextViewsTest(TestCase):
         self.assertEqual(response.status_code, 200)
         object = response.context['post']
         cst.assert_context_machine(ContextViewsTest(), object, dict)
+        # просто попробовал получить имя вьюшки
+        self.assertEqual(response.resolver_match.func.__name__, 'post_detail')
 
 
 class FormFieldsTest(TestCase):
