@@ -147,8 +147,10 @@ class Follow(models.Model):
         ordering = ('-subscribe_date',)
         verbose_name = 'подписка'
         verbose_name_plural = 'подписки'
-        unique_together = ['user', 'author']
-        constraints = [
+        # unique_together = ['user', 'author']
+        constraints = (
             models.CheckConstraint(
                 check=~Q(user=F('author')), name='not_for_self'),
-        ]
+            models.UniqueConstraint(
+                fields=['author', 'user'], name='uique_follow'),
+        )

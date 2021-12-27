@@ -43,12 +43,12 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
     'about.apps.AboutConfig',
-    # 'debug_toolbar',  # for debug toolbar
+    'debug_toolbar',  # for debug toolbar
     'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',  # for debug toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # for debug toolbar
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

@@ -19,14 +19,10 @@ handler500 = 'core.views.internal_problem'
 handler403 = 'core.views.permission_denied'
 
 if settings.DEBUG:
-    # import debug_toolbar
-
-    # import mimetypes
-    # mimetypes.add_type("application/javascript", ".js", True)
-
-    # urlpatterns = [
-    # path('__debug__/', include(debug_toolbar.urls)),
-    # ] + urlpatterns
+    import debug_toolbar
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)
+    urlpatterns += (path('__debug__/', include(debug_toolbar.urls)),)
 
     urlpatterns += static(
         settings.MEDIA_URL,

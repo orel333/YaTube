@@ -85,14 +85,14 @@ def post_detail(request, post_id):
     user_name = user_name_func(user)
     # posts_total = user.posts.all().count()
     posts_total = Post.objects.filter(author=user.pk).count()
-    comments = post.comments.all().select_related('author')
+    # comments = post.comments.all().select_related('author')
     context = {
         'post': post,
         'posts_total': posts_total,
         'author': user,
         'author_name': user_name,
         'form': CommentForm(),
-        'comments': comments
+        # 'comments': comments,
     }
     template = 'posts/post_detail.html'
     return render(request, template, context)
