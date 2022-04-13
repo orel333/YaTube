@@ -132,7 +132,7 @@ STATIC_URL = '/static/'  # потом поправить на /static/
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend' # in deployed version of the project here are real email_host settings enabled
 
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
