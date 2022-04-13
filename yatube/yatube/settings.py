@@ -16,7 +16,7 @@ LOGIN_REDIRECT_URL: str = 'posts:index'
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mgn$593jfl^!und4pkd(n^mx28alhj4ih*=c-d6yl&bghu)#sx'
+SECRET_KEY = 'some_key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
