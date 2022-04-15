@@ -4,4 +4,7 @@
 - При переходе на экран мобильного телефона в приложении настроена адаптация меню хедера в бургер, раскрывающийся при нажатии.
 - Абсолютно весь функционал приложения покрыт тестами.
 
-[![CI](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml)
+#### Использованы технологии:
+- Python 3.8.0
+- Django 2.2.16
+- Bootstrap 5.1.3
