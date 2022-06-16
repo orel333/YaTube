@@ -238,7 +238,6 @@ class FormTest(TestCase):
         )
 
         response = FormTest.new_client.get(cst.REVERSE_DICT['post'][0])
-        container = response.context['comments']
-        comment = Comment.objects.get(text=comment_data['text'])
+        # comment = Comment.objects.get(text=comment_data['text'])
         self.assertEqual(Comment.objects.count(), comment_num + 1)
-        self.assertIn(comment, container)
+        self.assertContains(response, comment_data['text'])

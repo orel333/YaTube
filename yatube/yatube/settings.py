@@ -26,7 +26,9 @@ ALLOWED_HOSTS: List[str] = [
     'testserver',
     '127.0.0.1',
     '[::1]',
-    'testserver'
+    'testserver',
+    'www.orel333.pythonanywhere.com',
+    'orel333.pythonanywhere.com'
 ]
 
 
@@ -161,9 +163,7 @@ CACHES = {
 
 
 # def show_toolbar(request):
-#   return True
-#
-#
+    # return True
 # DEBUG_TOOLBAR_CONFIG = {
-#   'SHOW_TOOLBAR_CALLBACK': show_toolbar
+    # 'SHOW_TOOLBAR_CALLBACK': show_toolbar
 # }
